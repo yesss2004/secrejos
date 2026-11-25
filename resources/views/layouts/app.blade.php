@@ -20,7 +20,7 @@
 <body class="page-bg min-h-full antialiased">
     <div id="sidebar-overlay" class="fixed inset-0 z-40 hidden bg-ink-950/60 backdrop-blur-sm lg:hidden"></div>
 
-    <aside id="sidebar" class="sidebar-shell sidebar-grid fixed inset-y-0 left-0 z-50 flex w-[280px] -translate-x-full flex-col overflow-hidden transition-transform duration-300 ease-out lg:translate-x-0">
+    <aside id="sidebar" class="sidebar-shell sidebar-grid fixed inset-y-0 left-0 z-50 flex w-[280px] max-w-[calc(100vw_-_3rem)] -translate-x-full flex-col overflow-hidden transition-transform duration-300 ease-out lg:translate-x-0">
         <div class="relative px-5 pb-5 pt-6">
             <a href="{{ route('dashboard') }}" class="flex items-center gap-3">
                 <x-brand-mark class="h-11 w-11" />
@@ -145,7 +145,7 @@
                             @endif
                         </button>
 
-                        <div id="notification-menu" data-dropdown class="absolute right-0 mt-2 hidden w-[340px] origin-top-right overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_24px_60px_-24px_rgba(15,23,42,0.35)]">
+                        <div id="notification-menu" data-dropdown class="absolute right-0 mt-2 hidden w-[340px] max-w-[calc(100vw_-_2rem)] origin-top-right overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_24px_60px_-24px_rgba(15,23,42,0.35)]">
                             <div class="flex items-center justify-between border-b border-slate-100 px-4 py-3">
                                 <div>
                                     <p class="text-sm font-extrabold text-ink-900">Notifikasi</p>

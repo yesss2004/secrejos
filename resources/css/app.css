@@ -18,6 +18,8 @@
 @layer base {
     html {
         scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
     }
 
     body {
@@ -449,6 +451,19 @@
     }
     75% {
         transform: rotate(-8deg);
+    }
+}
+
+/* iOS Safari zooms the page when focusing inputs smaller than 16px. */
+@media (max-width: 639px) {
+    input,
+    select,
+    textarea {
+        font-size: 16px !important;
+    }
+
+    .overflow-x-auto {
+        -webkit-overflow-scrolling: touch;
     }
 }
 

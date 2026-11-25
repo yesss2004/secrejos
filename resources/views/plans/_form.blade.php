@@ -169,7 +169,7 @@
             @endforeach
         </div>
         <div class="border-t border-slate-100 bg-slate-50/70 px-5 py-4 sm:px-6">
-            <div class="ml-auto grid max-w-xl grid-cols-3 gap-3 text-right text-xs">
+            <div class="grid gap-2 text-xs sm:ml-auto sm:max-w-xl sm:grid-cols-3 sm:gap-3 sm:text-right">
                 <div><p class="text-slate-400">Total Sebelum</p><p class="mt-1 font-extrabold text-slate-700" data-grand-total="before">Rp0</p></div>
                 <div><p class="text-slate-400">Total Sesudah</p><p class="mt-1 font-extrabold text-emerald-700" data-grand-total="after">Rp0</p></div>
                 <div><p class="text-slate-400">Selisih</p><p class="mt-1 font-extrabold text-slate-700" data-grand-total="difference">Rp0</p></div>
