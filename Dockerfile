@@ -50,11 +50,11 @@ RUN setcap CAP_NET_BIND_SERVICE=+eip /usr/local/bin/frankenphp \
 
 ENV PORT=80 \
     APP_ENV=production \
-    APP_DEBUG=false \
+    APP_DEBUG=true \
     LOG_CHANNEL=stderr \
-    CACHE_STORE=database \
-    SESSION_DRIVER=database \
-    QUEUE_CONNECTION=database
+    CACHE_STORE=array \
+    SESSION_DRIVER=cookie \
+    QUEUE_CONNECTION=sync
 
 USER www-data
 
