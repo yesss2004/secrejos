@@ -56,7 +56,10 @@ ENV PORT=80 \
     LOG_CHANNEL=stderr \
     CACHE_STORE=array \
     SESSION_DRIVER=cookie \
-    QUEUE_CONNECTION=sync
+    QUEUE_CONNECTION=sync \
+    VIEW_COMPILED_PATH=/tmp \
+    XDG_CONFIG_HOME=/tmp/caddy-config \
+    XDG_DATA_HOME=/tmp/caddy-data
 
 USER www-data
 

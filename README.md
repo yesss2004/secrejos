@@ -131,6 +131,8 @@ php artisan serve
 
 Aplikasi Laravel tidak bisa di-deploy sebagai static site. Repository ini sudah menyediakan `Dockerfile`, `Caddyfile`, dan `vercel.json` (FrankenPHP + container service), jadi cukup import repository ke Vercel dengan pengaturan default — **jangan** mengubah *Output Directory* ke `dist` atau `public/build`.
 
+Container Vercel menggunakan filesystem read-only. Image sudah mengarahkan cache Blade dan data runtime Caddy ke `/tmp`, jadi halaman tetap bisa dirender tanpa menulis ke filesystem aplikasi.
+
 Sebelum deploy, siapkan environment variable berikut di Vercel (Project Settings → Environment Variables):
 
 | Variable | Contoh / Catatan |
