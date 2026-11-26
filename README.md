@@ -135,16 +135,16 @@ Sebelum deploy, siapkan environment variable berikut di Vercel (Project Settings
 
 | Variable | Contoh / Catatan |
 |---|---|
-| `APP_KEY` | Generate dengan `php artisan key:generate --show`, pakai nilai yang sama untuk semua deploy |
+| `APP_KEY` | Disarankan diisi dengan nilai tetap dari `php artisan key:generate --show`. Jika kosong, image akan membuat key otomatis (cookie user akan reset tiap rebuild image) |
 | `APP_URL` | `https://nama-project.vercel.app` |
 | `APP_ENV` | `production` |
 | `APP_DEBUG` | `false` |
 | `LOG_CHANNEL` | `stderr` ( agar log masuk ke Vercel Runtime Logs ) |
 | `DB_CONNECTION` | `mysql` |
 | `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD` | Kredensial database eksternal (Vercel tidak menyediakan MySQL lokal) |
-| `SESSION_DRIVER` | `database` |
-| `CACHE_STORE` | `database` |
-| `QUEUE_CONNECTION` | `database` |
+| `SESSION_DRIVER` | `cookie` (default image, tidak butuh storage/database) |
+| `CACHE_STORE` | `array` |
+| `QUEUE_CONNECTION` | `sync` |
 
 Setelah deploy pertama, jalankan migrasi sekali terhadap database produksi:
 

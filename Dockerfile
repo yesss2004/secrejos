@@ -15,6 +15,8 @@ RUN cp "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" \
 
 WORKDIR /app
 
+RUN printf 'APP_KEY=base64:%s\nAPP_ENV=production\n' "$(php -r 'echo base64_encode(random_bytes(32));')" > .env
+
 FROM base AS dependencies
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
@@ -50,7 +52,7 @@ RUN setcap CAP_NET_BIND_SERVICE=+eip /usr/local/bin/frankenphp \
 
 ENV PORT=80 \
     APP_ENV=production \
-    APP_DEBUG=true \
+    APP_DEBUG=false \
     LOG_CHANNEL=stderr \
     CACHE_STORE=array \
     SESSION_DRIVER=cookie \
