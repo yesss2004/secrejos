@@ -127,6 +127,34 @@ npm run dev
 php artisan serve
 ```
 
+### Deploy ke Vercel
+
+Aplikasi Laravel tidak bisa di-deploy sebagai static site. Repository ini sudah menyediakan `Dockerfile`, `Caddyfile`, dan `vercel.json` (FrankenPHP + container service), jadi cukup import repository ke Vercel dengan pengaturan default — **jangan** mengubah *Output Directory* ke `dist` atau `public/build`.
+
+Sebelum deploy, siapkan environment variable berikut di Vercel (Project Settings → Environment Variables):
+
+| Variable | Contoh / Catatan |
+|---|---|
+| `APP_KEY` | Generate dengan `php artisan key:generate --show`, pakai nilai yang sama untuk semua deploy |
+| `APP_URL` | `https://nama-project.vercel.app` |
+| `APP_ENV` | `production` |
+| `APP_DEBUG` | `false` |
+| `LOG_CHANNEL` | `stderr` ( agar log masuk ke Vercel Runtime Logs ) |
+| `DB_CONNECTION` | `mysql` |
+| `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD` | Kredensial database eksternal (Vercel tidak menyediakan MySQL lokal) |
+| `SESSION_DRIVER` | `database` |
+| `CACHE_STORE` | `database` |
+| `QUEUE_CONNECTION` | `database` |
+
+Setelah deploy pertama, jalankan migrasi sekali terhadap database produksi:
+
+```bash
+vercel env pull .env.production
+php artisan migrate --force --env=production
+```
+
+> **Catatan penyimpanan:** container Vercel bersifat stateless, sehingga file yang diunggah ke disk lokal (`storage/app/public`) tidak awet antar instance/deploy. Untuk produksi, gunakan object storage eksternal (misalnya Vercel Blob atau S3) untuk lampiran dan berkas surat.
+
 ### Menjalankan Pengujian
 
 ```bash
