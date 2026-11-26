@@ -12,7 +12,16 @@ class AuthenticationTest extends TestCase
 
     public function test_login_page_can_be_rendered(): void
     {
-        $this->get('/login')->assertOk()->assertSee('Masuk');
+        $this->get('/login')->assertOk()->assertSee('Masuk')->assertDontSee('Akun admin');
+    }
+
+    public function test_login_assets_and_form_use_forwarded_https_scheme(): void
+    {
+        $this->withHeaders(['X-Forwarded-Proto' => 'https'])
+            ->get('/login')
+            ->assertOk()
+            ->assertSee('action="https://localhost:8000/login"', false)
+            ->assertSee('https://localhost:8000/build/assets/app-', false);
     }
 
     public function test_user_can_login_with_valid_credentials(): void

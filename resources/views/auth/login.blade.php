@@ -59,11 +59,4 @@
         </button>
     </form>
 
-    <div class="mt-6 rounded-xl border border-slate-200 bg-white/70 px-4 py-3">
-        <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400">Akun admin</p>
-        <div class="mt-2 text-[11px] text-slate-600">
-            <p><span class="font-semibold text-slate-800">Email:</span> admin@sekretariat.go.id</p>
-            <p class="mt-1"><span class="font-semibold text-slate-800">Kata sandi:</span> <code class="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px]">password</code></p>
-        </div>
-    </div>
 @endsection
